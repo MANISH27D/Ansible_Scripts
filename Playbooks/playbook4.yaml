@@ -1,0 +1,67 @@
+- hosts:  web
+  become: yes 
+
+  tasks:
+    - name: Remove old docker.list file       #remove an existing docker llist file
+      file:
+        path: /etc/apt/sources.list.d/docker.list
+        state:  absent
+
+    - name: Remove old docker packages      
+      apt:
+        name: "{{ item }}"                      #loop over each pkg 
+        state: absent
+
+      with_items:                               #list of old-related packages
+        - docker.io
+        - docker-doc
+        - docker-compose
+        - docker-compose-v2
+        - podman-docker
+        - containerd
+        - runc
+
+    - name: Install dependencies
+      apt:
+        name: "{{ item }}"
+        state:  present
+        update_cache: yes
+
+      with_items:               #list of dependencies to be installed
+        - curl
+        - gnupg
+        - lab-release
+        - ca-certificates
+
+    - name: Add docker gpg key    #add docker gpg key for package verification
+      apt_key:
+        url:  https://download.docker.com/linux/ubuntu/gpg
+        state:  present
+
+    - name: add docker repository     #add docker repository for pkg installation
+      apt_repository:
+        repo: "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu"
+        state: present
+        update_cache: true
+
+    - name: install docker-compose
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+
+      with_items:
+        - docker-ce 
+        - docker-ce-cli 
+        - containerd.io
+        - containerd.io
+        - docker-compose-plugin
+        - docker-buildx-plugin
+        - docker-authorization-plugin
+
+    - name: start docker services
+      services:
+        name: docker
+        state:  started
+
+
