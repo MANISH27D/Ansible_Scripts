@@ -1,0 +1,18 @@
+#pwd.yaml contains pwd 
+#ansible-vault encrypt pwd.yaml -> cmd to encrypt ansible playbook
+#ansible-vault edit pwd.yaml ->  edit the encrypted ansible playbook
+#ansible-playbook pwd.yaml --ask-vault-pass -> to run playbook
+#ansible-vaut decrypt pwd.yaml -> to decrypt vault file
+
+---
+- hosts: web
+  become:  yes 
+  tasks:
+  - include_vars: pwd..yaml
+  - name: create a login user
+    user: 
+      state:  present
+      name: user2 
+      password: "{{ user2.password | password_hash('sha512')  }}"
+      groups:
+      - sudo
