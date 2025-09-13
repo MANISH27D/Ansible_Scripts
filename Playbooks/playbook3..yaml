@@ -1,0 +1,38 @@
+- hosts:  web
+  become: yes
+
+  vars:                         #variables defined which can be used throughout in playbook
+    http_port:  8000
+    https_port:  4443
+    html_welcome_msg: "Hello wold!"
+
+  tasks:
+    - name: ensure apache is at the latest version   #installing apache in host servers
+      apt:
+        name: apache2
+        state: latest
+
+    - name: write the apache2 ports.conf config file  
+      template:
+        src: template/ports.conf.j2
+        dest: /etc/apache2/ports.conf
+      notify:
+      - restart apache
+
+    - name: write the apache2 ports.conf config file  
+      template:
+        src: template/index.html.j2
+        dest: /var/www/html/index.html
+      notify:
+      - restart apache
+
+    - name: ensure apache is running  #mke sure apache running
+      service:
+        name: apache2
+        state: started
+
+  handlers:                  #handlers make sure service get started if configuration get hanged
+    - name: restart apache
+      service:
+        name: apache2
+        state:  restarted
