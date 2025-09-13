@@ -1,0 +1,11 @@
+--- 
+-  hosts: web 
+   become:  yes 
+   tasks:
+   -  name: create user in system
+      user:
+        name: user1
+        state:  present
+        password: "root123"
+        groups:
+        - sudo
