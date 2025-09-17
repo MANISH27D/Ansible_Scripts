@@ -1,0 +1,17 @@
+Running a Playbook   -  ansible-playbook  playbook.yaml
+" with inventory  -  ansible-playbook -i inventory playbook.yaml
+" with limit  -  ansible-playbook --limit "web" playbook.yaml
+" with tags  -  ansible-playbook playbook.yaml --tags "hello"
+" with skip tags  -  ansible-playbook playbook.yaml --skip-tags  "hello"
+" with extra variables  -  ansible-playbook playbook.yaml  --extra-vars  "my_var=123"
+" with limit and inventory  -  ansible-playbook playbook.yaml -i inventory --limit "web"
+" with vault pwd. file  -  ansible-playbook playbook.yaml --vault-password-file ~./vault_pass.txt
+" with ask vault pwd. -  ansible-playbook playbook.yaml --ask-vault-pass
+"  with ask suo pwd.  -  ansible-playbook playbook.yaml  --ask-become-pass
+" with ask pass  -  ansible-playbook playbook.yaml --ask-pass
+" in check mode  -  ansible-playbook playbook.yaml  --check
+" in diff mode  -  ansible-playbook playbook.yaml --diff
+" in verbose mode  -  ansible-playbook -v playbook-yaml
+" extra verbose mode  -  ansible-playbook -vv playbook.yaml
+" with forks  -  ansible-playbook playbook.yaml --forks 100
+" with timeout  -  ansible-playbook playbook.yaml --timeout 30
