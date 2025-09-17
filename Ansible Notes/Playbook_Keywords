@@ -1,0 +1,26 @@
+name  -  The name of the playbook or task.
+hosts  -  The hosts or host groups to run the playbook on.
+become  -  Whether to run tasks with privilege escalation.
+become_user  -  The user to become when using privilege escalation.
+become_method  -  The method to use for privilege escalation.
+remote_user  -  The user to connect as on the rmote host.
+vars  -  The variables to be used in the playbook.
+vars_files   -  The files containing variables to be used in the playbook.
+tasks  -   The list of tasks to be executed.
+handlers  -  The list of handlers to be executed upon notification.
+pre_tasks  -  The list of tasks to be executed before roles.
+post_tasks  -  list of tasks executed after main tasks.
+roles  -  The list of roles to be included and executed.
+serial  -  The number of hosts to process in each playbook run.
+max_fail_percentage   -  maximum failure % allowed to continue the playbook.
+any_errors_fatal  -  whether any error is enough to stop the playbook
+ignore_errors  -  whether to ignore errors on a task.
+gather_facts  -  whether to gather facts at the beginning of the playbook.
+no_log  -  whether to disable logging for task.
+force_handlers  -  whether to run handlers even if a task fails.
+tags  -  the tags associated with tasks or roles for selective running.
+check_mode  -  whether to show differences in tasks where supported.
+diff    -  whether to show differnces in tasks where supported.
+connection  -  the connection type to use (e.g. ssh, local, winrm).
+timeout  -  the connection timeout duration in seconds.
+gather_subset  -  the subset of facts to gather (values all, min, hardware, network etc.).
