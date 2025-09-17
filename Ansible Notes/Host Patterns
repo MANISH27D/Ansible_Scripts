@@ -1,0 +1,9 @@
+all  -   All hosts in the inventory.
+*  -  same as all.
+group1  -  All hosts in the group group1.
+group1:group2  -  all hosts in groups group1 and group2.
+group1:!group2  -  all hosts in group1 and not in group2.
+group1:&group2  -  all hosts in both group1 and group2.
+group1:&group2:!group3  -  all hosts in both group1 and group2 that are not in group3.
+group1:group2:&group3  -  all hosts in group1 and group2 that are also in group3.
+group1:group2:!group3:&group4  -  all hosts in both group1 and group2 that are not in group3 and are also in group4.
