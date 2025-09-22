@@ -1,0 +1,17 @@
+#ansible all -m copy "src=/etc/hosts dest=/tmp/hosts  owner=root group=root module=0644 seuser=system_u \
+# serole=object_r"
+
+--- 
+- name: Copy a fie withh Permissions
+  hosts: all 
+  become: yes
+  become_method: sudo
+  become_user: root 
+  tasks:
+    - name: Copy a file from sorce to destination
+      copy: 
+        src: /etc/hosts 
+        dest: /tmp/hosts 
+        owner:  root 
+        group: root 
+        mode: 0644

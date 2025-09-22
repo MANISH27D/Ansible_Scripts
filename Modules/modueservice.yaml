@@ -1,0 +1,13 @@
+# ansible all m service -a "name=nginx state=restarted"
+
+---
+- name: Start nginx service
+  hosts: true
+  become: yes
+  become_method: sudo
+  become_user: root 
+  tasks: 
+    - name: restart nginx service
+      service:
+          name: nginx
+          state: restarted
