@@ -1,0 +1,13 @@
+# ansible all -m apt -a "name=nginx state=present"
+
+--- 
+- name: Install a Package
+  hosts: all 
+  become: yes
+  become_user:  root
+  become_method: sudo
+  tasks:
+    - name: Install a Package 
+      apt: 
+        name: nginx 
+        state: present 

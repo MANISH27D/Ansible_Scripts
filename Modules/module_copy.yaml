@@ -1,0 +1,10 @@
+# ansible all -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+
+--- 
+- name: Copy a File
+  hosts: all
+  tasks: 
+    - name: Copy a File
+      copy:
+        src: /etc/hosts
+        dest: /tmp/hosts  

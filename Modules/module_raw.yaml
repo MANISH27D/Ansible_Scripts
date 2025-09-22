@@ -1,0 +1,8 @@
+# ansible all -m raw -a "echo $TERM"
+
+---
+- name: Run a Raw Command 
+  hosts: all
+  tasks:  
+    - name: Run a Raw Command 
+      raw: echoo $TERM

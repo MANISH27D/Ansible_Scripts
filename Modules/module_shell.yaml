@@ -1,0 +1,9 @@
+# ansible all -m shell -a "echo $TERM"
+
+
+--- 
+- name: Run a shell commmand
+  hosts: all
+  tasks:
+    - name: Run a Shell Command 
+      shell:  echo $TERM 

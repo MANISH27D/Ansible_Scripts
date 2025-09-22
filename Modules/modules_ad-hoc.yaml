@@ -1,0 +1,8 @@
+#AD-HOC ansible all -m commmand -a "uptime"
+
+---
+- name: Run a commmand
+  hosts:  all
+  tasks:  
+    - name: Run a commmand
+      command:  uptime 
