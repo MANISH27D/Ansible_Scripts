@@ -1,0 +1,15 @@
+---
+- hosts:  web
+  become: yes
+  tasks:
+  - name: Install packages
+    block:
+    - name: Install nginx
+      apt:
+        name: nginx 
+        state:  present
+    - name: Install apache2
+      apt:
+        name: apache2 
+        state: present 
+  when: ansible__os_family == "Debian"
